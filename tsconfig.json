@@ -18,7 +18,7 @@
     "strictNullChecks": true,
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "typeRoots": ["./src/types"],
-    "types": ["node"]
+    // "types": ["node"]
   },
   "exclude": ["lib/prisma"],
   "include": ["./.eslintrc.js", "./src", "lib/try.ts"]

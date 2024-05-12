@@ -1,0 +1,12 @@
+
+import {mysqlTable,int,mysqlEnum,varchar,timestamp} from "drizzle-orm/mysql-core"
+
+export const usertable=mysqlTable("users",{
+    id:int("id").primaryKey().autoincrement(),
+name:varchar("name",{length:256}).notNull(),
+lastname:varchar("lastname",{length:256}),
+password:varchar("password",{length:256}).notNull(),
+role:mysqlEnum("role",["admin","user","employee"]).notNull().default("user"),
+createdAt:timestamp("createdAt").defaultNow().notNull(),
+
+})
