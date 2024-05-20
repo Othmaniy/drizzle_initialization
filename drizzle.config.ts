@@ -3,5 +3,5 @@ require("dotenv").config()
 export default defineConfig({
   dialect: "mysql",
   schema: "./src/db/schema",
-  out: "./migrations",
+  out: "./src/db/migrations",
 });

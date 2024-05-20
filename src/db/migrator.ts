@@ -13,7 +13,7 @@ const dbmigrate = async()=>{
         })
         const dbmigrator =drizzle(dbconnection)
         await migrate(dbmigrator, {
-            migrationsFolder:path.resolve("migrations")
+            migrationsFolder:path.resolve("./src/db/migrations")
         })
         console.log("migration done");
     }

@@ -1,16 +1,12 @@
 import express from "express";
-
+import userrouter from "./api/router/user.router"
 const app = express();
 
-app.get("/",(req,res)=>{
-    res.send("welcom to ts ")
+app.use(express.urlencoded({extended:true}))
+app.use(express.json());
+app.use("/api/users",userrouter)
 
-})
-app.get("/ch",(req,res)=>{
-    res.send("kjshgfg")
-})
 
 app.listen(3000,()=>{
-    console.log("listening to port ");
+    console.log("listening to port yuio jjkk ithink ");
 })
-

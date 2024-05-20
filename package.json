@@ -5,12 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate": "drizzle-kit generate",
-    "migrate": "ts-node --files migrator.ts",
-    "query":"ts-node --files src/app.ts",
+    "generate": "drizzle-kit generate  ./src/db/schema/userschema.ts",
+    "migrate": "ts-node --files ./src/db/migrator.ts",
     "build": "npx tsc",
-    "start": "node dist/index.js",
-    "prestart": "npm run build",
+    "start": "nodemon index.ts",
+
     "dev": "tsc -w & nodemon dist/index.js"
   },
   "keywords": [],
