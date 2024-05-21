@@ -26,15 +26,17 @@ export const createquestion =async(req:Request,res:Response)=>{
 }
 
 export const getsinglequestion =async(req:Request,res:Response)=>{
-    const {questionid}=req.params;
+    const questionid=req.params.id;
+    console.log(questionid);;
     const questionidint=parseInt(questionid)
     try{
         const getquestion =  await db.select().from(questions).where(eq(questions.question_id,questionidint))
+        return res.status(200).json({
+            data:getquestion[0]
+        })
 
     }
     catch(error){
         console.log(error);
     }
-  
-
 }
