@@ -37,7 +37,6 @@ catch(error){
 }
 
 }
-
 //login function
 export const login =async(req:Request,res:Response)=>{
     try{
