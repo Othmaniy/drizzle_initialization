@@ -19,3 +19,9 @@ role:mysqlEnum("role",["admin","user","employee"]).notNull().default("user"),
 createdAt:timestamp("createdAt").defaultNow().notNull(),
 
 })
+export const books=mysqlTable("books",{
+    bookId:int("bookid").primaryKey().autoincrement().notNull(),
+    book_name:varchar("bookName",{length:256}).notNull(),
+    book_author:varchar("bookAuthor",{length:256}).notNull()
+
+})
