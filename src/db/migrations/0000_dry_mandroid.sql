@@ -1,7 +1,8 @@
 CREATE TABLE `answers` (
 	`answerId` int AUTO_INCREMENT NOT NULL,
 	`answer` varchar(256),
-	`anUserid` varchar(256),
+	`anUserid` int,
+	`questionid` int,
 	CONSTRAINT `answers_answerId` PRIMARY KEY(`answerId`)
 );
 --> statement-breakpoint
@@ -23,4 +24,5 @@ CREATE TABLE `users` (
 );
 --> statement-breakpoint
 ALTER TABLE `answers` ADD CONSTRAINT `answers_anUserid_users_id_fk` FOREIGN KEY (`anUserid`) REFERENCES `users`(`id`) ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE `answers` ADD CONSTRAINT `answers_questionid_questions_questionId_fk` FOREIGN KEY (`questionid`) REFERENCES `questions`(`questionId`) ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE `questions` ADD CONSTRAINT `questions_userId_users_id_fk` FOREIGN KEY (`userId`) REFERENCES `users`(`id`) ON DELETE no action ON UPDATE no action;

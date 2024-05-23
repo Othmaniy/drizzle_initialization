@@ -30,13 +30,21 @@ export const getsinglequestion =async(req:Request,res:Response)=>{
     console.log(questionid);;
     const questionidint=parseInt(questionid)
     try{
-        const getquestion =  await db.select().from(questions).where(eq(questions.question_id,questionidint))
-        return res.status(200).json({
-            data:getquestion[0]
-        })
-
+        const getquestion =  await db.select().from(questions).where(eq(questions.question_id,questionidint));
+        if(getquestion.length>0){
+            return res.status(200).json({
+                data:getquestion[0]
+            })
+        }
+        else{
+            return res.status(404).json({
+                message:"question not found"
+            })
+        }
+      
     }
     catch(error){
         console.log(error);
+        return res.status(500).json({ message: "Failed to retrieve question" });
     }
 }

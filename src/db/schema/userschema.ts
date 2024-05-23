@@ -35,5 +35,6 @@ export const questions =mysqlTable("questions",{
 export const answer =mysqlTable("answers",{
     answer_id:int("answerId").notNull().autoincrement().primaryKey(),
     answer:varchar("answer",{length:256}),
-    an_userid:int("anUserid").references(()=>usertable.id)
+    an_userid:int("anUserid").references(()=>usertable.id),
+    question_id:int("questionid").references(()=>questions.question_id)
 })

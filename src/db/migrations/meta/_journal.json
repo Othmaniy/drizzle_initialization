@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1716283156828,
-      "tag": "0000_nappy_northstar",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1716283346623,
-      "tag": "0001_new_ozymandias",
+      "when": 1716424032713,
+      "tag": "0000_dry_mandroid",
       "breakpoints": true
     }
   ]

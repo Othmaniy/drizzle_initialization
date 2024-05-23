@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "3a95bf93-a7b7-488b-8b92-44d91e7df60f",
+  "id": "7250662a-e4ed-4ee5-8bdc-106497d62ccf",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "answers": {
@@ -23,7 +23,14 @@
         },
         "anUserid": {
           "name": "anUserid",
-          "type": "varchar(256)",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "questionid": {
+          "name": "questionid",
+          "type": "int",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
@@ -40,6 +47,19 @@
           ],
           "columnsTo": [
             "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "answers_questionid_questions_questionId_fk": {
+          "name": "answers_questionid_questions_questionId_fk",
+          "tableFrom": "answers",
+          "tableTo": "questions",
+          "columnsFrom": [
+            "questionid"
+          ],
+          "columnsTo": [
+            "questionId"
           ],
           "onDelete": "no action",
           "onUpdate": "no action"
