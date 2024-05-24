@@ -41,6 +41,11 @@ export const  getAnswers =async (req:Request,res:Response)=>{
            data:fetchanswer
         })
        }
+       else{
+        return res.status(404).json({
+            message:"no answers for question"
+        })
+       }
        
     }
     catch(error){
