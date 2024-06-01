@@ -1,8 +1,9 @@
+
 import { json } from "stream/consumers";
 import { db } from "../../src/db/db";
-import { questions } from "../../src/db/schema/userschema";
 import { Request,Response } from 'express';
 import { eq } from "drizzle-orm";
+import { questions, usertable } from "../../src/db/schema/userschema";
 
 export const createquestion =async(req:Request,res:Response)=>{
     const {question,userId} = req.body;
@@ -47,4 +48,51 @@ export const getsinglequestion =async(req:Request,res:Response)=>{
         console.log(error);
         return res.status(500).json({ message: "Failed to retrieve question" });
     }
+}
+
+export const updateQuestion= async (req:Request,res:Response)=>{
+    const qid = parseInt(req.params.id)
+    const {question} =req.body
+    try{
+        const updateq = await db.update(questions)
+        .set({ questions:question })
+        .where(eq(questions.question_id, qid));
+    if(updateq[0].affectedRows>0){
+        return res.status(200).json({
+            message:"queston updated sucessfully"
+        })
+    }
+       
+
+    }
+    catch(err){
+        console.log(err);
+        return res.status(500).json({
+            message:"failed to update question"
+        })
+    }
+  
+
+}
+
+export const dashboard=async(req:Request,res:Response)=>{
+
+    try{
+        const result = await db.select({
+            username:usertable.name,
+            userid:usertable.id,
+            question:questions.questions
+        }).from(usertable).innerJoin(questions,eq(usertable.id,questions.user_id))
+
+        if(result.length>0){
+            return res.status(200).json({messages:result})
+        }
+    }
+    catch(err){
+        console.log(err);
+        return res.status(500).json({message:"error happended fetching dashboard"})
+    };
+    
+
+
 }
