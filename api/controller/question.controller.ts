@@ -81,7 +81,8 @@ export const dashboard=async(req:Request,res:Response)=>{
         const result = await db.select({
             username:usertable.name,
             userid:usertable.id,
-            question:questions.questions
+            question:questions.questions,
+            qid:questions.question_id
         }).from(usertable).innerJoin(questions,eq(usertable.id,questions.user_id))
 
         if(result.length>0){

@@ -42,7 +42,7 @@ export const  getAnswers =async (req:Request,res:Response)=>{
         })
        }
        else{
-        return res.status(404).json({
+        return res.status(500).json({
             message:"no answers for question"
         })
        }
